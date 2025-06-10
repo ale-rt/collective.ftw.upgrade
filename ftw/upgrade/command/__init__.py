@@ -21,8 +21,8 @@ import logging
 import sys
 
 
-VERSION = get_distribution('ftw.upgrade').version
-logger = logging.getLogger('ftw.upgrade')
+VERSION = get_distribution("ftw.upgrade").version
+logger = logging.getLogger("ftw.upgrade")
 
 
 DOCS = """
@@ -109,28 +109,29 @@ $ UPGRADE_PUBLIC_URL="http://my.site.com/foo/bar" bin/upgrade
 {t.bold}MORE INFORMATION:{t.normal}
     Project Homepage: https://github.com/4teamwork/ftw.upgrade
     ftw.upgrade version: {version}
-""".format(t=TERMINAL, version=VERSION).strip()
+""".format(
+    t=TERMINAL, version=VERSION
+).strip()
 
 
 class UpgradeArgumentParser(argparse.ArgumentParser):
     def __init__(self, *args, **kwargs):
-        kwargs['formatter_class'] = FlexiFormatter
+        kwargs["formatter_class"] = FlexiFormatter
         super().__init__(*args, **kwargs)
 
 
 class UpgradeCommand:
 
     def __init__(self):
-        self.parser = UpgradeArgumentParser(
-            sys.argv[0],
-            epilog=DOCS)
+        self.parser = UpgradeArgumentParser(sys.argv[0], epilog=DOCS)
 
-        self.parser.add_argument('--version', action='version',
-                                 version=f'%(prog)s {VERSION}')
+        self.parser.add_argument(
+            "--version", action="version", version=f"%(prog)s {VERSION}"
+        )
 
         argcomplete.autocomplete(self.parser)
 
-        commands = self.parser.add_subparsers(help='Command')
+        commands = self.parser.add_subparsers(help="Command")
         combine_bundles.setup_argparser(commands)
         create.setup_argparser(commands)
         install.setup_argparser(commands)
@@ -148,25 +149,24 @@ class UpgradeCommand:
     def __call__(self):
         args = self.parser.parse_args()
         configure_logging(args)
-        setattr(args, 'parser', self.parser)
-        if getattr(args, 'all_sites', False):
+        setattr(args, "parser", self.parser)
+        if getattr(args, "all_sites", False):
             info = {}
             while True:
                 try:
                     with capture() as out:
                         args.func(args)
                     output = out.getvalue().strip()
-                    if getattr(args, 'json', False):
+                    if getattr(args, "json", False):
                         # "[]" must be turned into [] and put in dictionary.
                         output = json.loads(output)
                         info[args.picked_site] = output
                     else:
-                        logger.info('Acting on site {}'.format(
-                            args.picked_site))
+                        logger.info("Acting on site {}".format(args.picked_site))
                         print(output)
                 except StopIteration:
                     break
-            if getattr(args, 'json', False):
+            if getattr(args, "json", False):
                 # Pretty print the output of all sites.
                 print(json.dumps(info, indent=4))
         else:
@@ -176,24 +176,30 @@ class UpgradeCommand:
 def configure_logging(args):
     # Extend the level names with colors.
     logging.addLevelName(
-        logging.INFO, '{t.green}{levelname}{t.normal}'.format(
-            t=TERMINAL, levelname=logging.getLevelName(logging.INFO)))
+        logging.INFO,
+        "{t.green}{levelname}{t.normal}".format(
+            t=TERMINAL, levelname=logging.getLevelName(logging.INFO)
+        ),
+    )
     for level in (logging.WARN, logging.ERROR, logging.CRITICAL):
         logging.addLevelName(
-            level, '{t.red_bold}{levelname}{t.normal}'.format(
-                t=TERMINAL, levelname=logging.getLevelName(level)))
-    if getattr(args, 'verbose', False):
+            level,
+            "{t.red_bold}{levelname}{t.normal}".format(
+                t=TERMINAL, levelname=logging.getLevelName(level)
+            ),
+        )
+    if getattr(args, "verbose", False):
         # Log debug level and higher for all loggers.
         start_level = logging.DEBUG
-        format = '%(levelname)s %(name)s: %(message)s'
+        format = "%(levelname)s %(name)s: %(message)s"
         logging.basicConfig(level=start_level, format=format)
     else:
         # Log info level and higher, only for our own logger.
         start_level = logging.INFO
-        format = '%(levelname)s: %(message)s'
+        format = "%(levelname)s: %(message)s"
         logging.basicConfig(level=start_level, format=format)
         for handler in logging.root.handlers:
-            handler.addFilter(logging.Filter('ftw.upgrade'))
+            handler.addFilter(logging.Filter("ftw.upgrade"))
 
 
 def main():

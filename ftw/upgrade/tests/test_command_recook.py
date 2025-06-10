@@ -10,10 +10,10 @@ class TestRecookCommand(CommandAndInstanceTestCase):
         self.write_zconf_with_test_instance()
 
     def test_help(self):
-        self.upgrade_script('recook --help')
+        self.upgrade_script("recook --help")
 
     def test_recook_resources(self):
         with self.assert_resources_recooked():
-            exitcode, output = self.upgrade_script('recook -s plone')
-            self.assertEqual('OK\n', output)
+            exitcode, output = self.upgrade_script("recook -s plone")
+            self.assertEqual("OK\n", output)
             transaction.begin()

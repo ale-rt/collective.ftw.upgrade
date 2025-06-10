@@ -19,7 +19,9 @@ DOCS = """
 
 def setup_argparser(commands):
     command = commands.add_parser(
-        'combine_bundles', help='Combine JS/CSS bundles together (Plone 5).', description=DOCS
+        "combine_bundles",
+        help="Combine JS/CSS bundles together (Plone 5).",
+        description=DOCS,
     )
     command.set_defaults(func=combine_bundles)
     add_requestor_authentication_argument(command)
@@ -30,4 +32,4 @@ def setup_argparser(commands):
 @with_api_requestor
 @error_handling
 def combine_bundles(args, requestor):
-    print(requestor.POST('combine_bundles').json())
+    print(requestor.POST("combine_bundles").json())

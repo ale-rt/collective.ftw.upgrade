@@ -11,11 +11,11 @@ class TestCombineBundlesCommand(CommandAndInstanceTestCase):
         self.write_zconf_with_test_instance()
 
     def test_help(self):
-        self.upgrade_script('combine_bundles --help')
+        self.upgrade_script("combine_bundles --help")
 
-    @skipIf(getFSVersionTuple() < (5,), 'The test only works on Plone 5+.')
+    @skipIf(getFSVersionTuple() < (5,), "The test only works on Plone 5+.")
     def test_combine_bundles(self):
         with self.assert_bundles_combined():
-            exitcode, output = self.upgrade_script('combine_bundles -s plone')
-            self.assertEqual('OK\n', output)
+            exitcode, output = self.upgrade_script("combine_bundles -s plone")
+            self.assertEqual("OK\n", output)
             transaction.begin()

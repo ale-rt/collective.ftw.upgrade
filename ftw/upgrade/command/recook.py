@@ -12,14 +12,15 @@ DOCS = """
 [quote]
     $ ./bin/upgrade recook --site Plone
 [/quote]
-""".format(t=TERMINAL).strip()
+""".format(
+    t=TERMINAL
+).strip()
 
 
 def setup_argparser(commands):
     command = commands.add_parser(
-        'recook',
-        help='Recook CSS and JavaScript resource bundles.',
-        description=DOCS)
+        "recook", help="Recook CSS and JavaScript resource bundles.", description=DOCS
+    )
     command.set_defaults(func=recook_command)
     add_requestor_authentication_argument(command)
     add_requestor_instance_argument(command)
@@ -29,4 +30,4 @@ def setup_argparser(commands):
 @with_api_requestor
 @error_handling
 def recook_command(args, requestor):
-    print(requestor.POST('recook_resources').json())
+    print(requestor.POST("recook_resources").json())
