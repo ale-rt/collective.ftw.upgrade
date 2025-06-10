@@ -15,7 +15,8 @@ tests_require = [
 
 extras_require = {
     "colors": ["blessed"],
-    "tests": tests_require,
+    "tests": tests_require,  # Deprecated, use `test` like plone.meta wants instead.
+    "test": tests_require,
 }
 
 setup(
