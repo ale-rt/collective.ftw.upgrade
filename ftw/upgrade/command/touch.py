@@ -3,7 +3,7 @@ from datetime import timedelta
 from ftw.upgrade.command.terminal import TERMINAL
 from ftw.upgrade.directory.scaffold import DATETIME_FORMAT
 from ftw.upgrade.directory.scanner import UPGRADESTEP_DATETIME_REGEX
-from path import Path
+from pathlib import Path
 
 import argparse
 import re

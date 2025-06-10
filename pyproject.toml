@@ -120,6 +120,59 @@ Zope = [
 ]
 python-dateutil = ['dateutil']
 pytest-plone = ['pytest', 'zope.pytestlayer', 'plone.testing', 'plone.app.testing']
+ignore-packages = ['blessed','cgi','distutils','other.package']
+'Plone' = [
+        'AccessControl',
+        'Acquisition',
+        'App',
+        'BTrees',
+        'lxml',
+        'OFS',
+        'persistent',
+        'plone.app.contenttypes',
+        'plone.app.intid',
+        'plone.app.relationfield',
+        'plone.app.textfield',
+        'plone.app.uuid',
+        'plone.base',
+        'plone.browserlayer',
+        'plone.dexterity',
+        'plone.namedfile',
+        'plone.portlets',
+        'plone.protect',
+        'plone.registry',
+        'plone.uuid',
+        'Products.BTreeFolder2',
+        'Products.CMFCore',
+        'Products.CMFPlacefulWorkflow',
+        'Products.CMFPlone',
+        'Products.GenericSetup',
+        'Products.SiteAccess',
+        'Products.ZCatalog',
+        'transaction',
+        'z3c.relationfield',
+        'zExceptions',
+        'zope.annotation',
+        'zope.browser',
+        'zope.component',
+        'zope.configuration',
+        'zope.container',
+        'zope.deprecation',
+        'zope.event',
+        'zope.globalrequest',
+        'zope.interface',
+        'zope.intid',
+        'zope.keyreference',
+        'zope.lifecycleevent',
+        'zope.publisher',
+        'zope.schema',
+        'zope.security',
+        'ZPublisher',
+    ]
+    'plone.app.testing' = [
+        'plone.testing',
+    ]
+
 
 ##
 # Add extra configuration options in .meta.toml:

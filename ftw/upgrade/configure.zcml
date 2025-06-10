@@ -33,20 +33,4 @@
       handler=".directory.subscribers.profile_installed"
       />
 
-  <configure zcml:condition="installed collective.indexing">
-    <utility
-        factory=".indexing.LoggingQueueProcessor"
-        provides="collective.indexing.interfaces.IIndexQueueProcessor"
-        name="ftw-upgrade-logging"
-        />
-  </configure>
-
-  <configure zcml:condition="have plone-5">
-    <utility
-        factory=".indexing.LoggingQueueProcessor"
-        provides="Products.CMFCore.interfaces.IIndexQueueProcessor"
-        name="ftw-upgrade-logging"
-        />
-  </configure>
-
 </configure>

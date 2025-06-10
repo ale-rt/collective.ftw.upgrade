@@ -2,7 +2,7 @@ from ftw.upgrade.command.terminal import TERMINAL
 from ftw.upgrade.command.utils import find_egginfo
 from ftw.upgrade.command.utils import find_package_namespace_path
 from ftw.upgrade.directory.scaffold import UpgradeStepCreator
-from path import Path
+from pathlib import Path
 
 import argparse
 import sys

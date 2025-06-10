@@ -1,5 +1,5 @@
 from io import StringIO
-from path import Path
+from pathlib import Path
 
 import contextlib
 import os

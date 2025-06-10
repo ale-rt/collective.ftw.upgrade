@@ -1,6 +1,6 @@
 from binascii import hexlify
 from ftw.upgrade.utils import get_tempfile_authentication_directory
-from path import Path
+from pathlib import Path
 from plone.base.utils import safe_binary
 from requests.auth import AuthBase
 from requests.auth import HTTPBasicAuth

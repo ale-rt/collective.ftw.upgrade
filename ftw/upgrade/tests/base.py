@@ -17,7 +17,7 @@ from ftw.upgrade.tests.helpers import truncate_memory_and_duration
 from ftw.upgrade.tests.helpers import verbose_logging
 from io import StringIO
 from operator import itemgetter
-from path import Path
+from pathlib import Path
 from plone.app.testing import login
 from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME

@@ -4,7 +4,7 @@ from collections import defaultdict
 from contextlib import contextmanager
 from copy import deepcopy
 from ftw.upgrade.exceptions import CyclicDependencies
-from path import Path
+from pathlib import Path
 from zExceptions import NotFound
 from zope.component.hooks import getSite
 from zope.component.hooks import setSite

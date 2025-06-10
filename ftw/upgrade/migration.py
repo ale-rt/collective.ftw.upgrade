@@ -34,42 +34,26 @@ from zope.lifecycleevent import ObjectModifiedEvent
 from zope.schema import getFieldsInOrder
 
 import logging
-import pkg_resources
 
 
-try:
-    pkg_resources.get_distribution("Products.Archetypes")
-except pkg_resources.DistributionNotFound:
+class IBaseObject(Interface):
+    # TODO: Remove me, this is a placeholder for Products.Archetypes.interfaces.IBaseObject  # noqa: E501
+    pass
 
-    class IBaseObject(Interface):
-        pass
 
-    class IComputedField(Interface):
-        pass
+class IComputedField(Interface):
+    # TODO: Remove me, this is a placeholder for Products.Archetypes.interfaces.IComputedField  # noqa: E501
+    pass
 
-else:
-    from Products.Archetypes.interfaces import IBaseObject
-    from Products.Archetypes.interfaces import IComputedField
 
-try:
-    pkg_resources.get_distribution("plone.app.blob")
-except pkg_resources.DistributionNotFound:
+class IBlobWrapper(Interface):
+    # TODO: Remove me, this is a placeholder for plone.app.blob.interfaces.IBlobWrapper
+    pass
 
-    class IBlobWrapper(Interface):
-        pass
 
-else:
-    from plone.app.blob.interfaces import IBlobWrapper
-
-try:
-    pkg_resources.get_distribution("archetypes.referencebrowserwidget")
-except pkg_resources.DistributionNotFound:
-
-    class IATReferenceField(Interface):
-        pass
-
-else:
-    from archetypes.referencebrowserwidget.interfaces import IATReferenceField
+class IATReferenceField(Interface):
+    # TODO: Remove me, this is a placeholder for archetypes.referencebrowserwidget.interfaces.IReferenceField  # noqa: E501
+    pass
 
 
 DISABLE_FIELD_AUTOMAPPING = 1

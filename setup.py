@@ -10,20 +10,12 @@ tests_require = [
     "ftw.testing >= 2.0.0.dev0",
     "ftw.testbrowser >= 2.1.0.dev0",
     "ftw.builder >= 2.0.0.dev0",
-    "plone.testing",
     "plone.app.testing",
-    "plone.app.intid",
-    "plone.app.contenttypes",
-    "zope.configuration",
-    "zc.recipe.egg",
-    "transaction",
-    "Products.CMFPlacefulWorkflow",
 ]
 
 extras_require = {
     "colors": ["blessed"],
     "tests": tests_require,
-    "test_archetypes": ["Products.ATContentTypes"],
 }
 
 setup(
@@ -64,26 +56,11 @@ setup(
     install_requires=[
         "argcomplete",
         "inflection",
-        "path.py >= 6.2",
         "requests",
         "setuptools",
         "tarjan",
         "psutil",
-        "AccessControl",
-        "Acquisition",
-        "transaction",
-        "Products.BTreeFolder2",
-        "Products.ZCatalog",
-        "zope.component",
-        "zope.interface",
-        "zope.publisher",
-        "Zope2",
-        # Plone
         "Plone",
-        "Products.GenericSetup",
-        "plone.browserlayer",
-        "Products.CMFCore",
-        "Products.CMFPlone",
     ],
     tests_require=tests_require,
     extras_require=extras_require,
