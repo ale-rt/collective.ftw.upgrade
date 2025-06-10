@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 from ftw.upgrade.command.terminal import TERMINAL
 from ftw.upgrade.command.utils import find_egginfo
 from ftw.upgrade.command.utils import find_package_namespace_path
@@ -76,7 +74,7 @@ def upgrades_path(path):
 
     if not path.isdir():
         raise argparse.ArgumentTypeError(
-            '"{0}" does not exist or is not a directory'.format(path))
+            f'"{path}" does not exist or is not a directory')
 
     return path
 

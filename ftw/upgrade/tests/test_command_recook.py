@@ -6,7 +6,7 @@ import transaction
 class TestRecookCommand(CommandAndInstanceTestCase):
 
     def setUp(self):
-        super(TestRecookCommand, self).setUp()
+        super().setUp()
         self.write_zconf_with_test_instance()
 
     def test_help(self):

@@ -7,7 +7,7 @@ import transaction
 
 class TestCombineBundlesCommand(CommandAndInstanceTestCase):
     def setUp(self):
-        super(TestCombineBundlesCommand, self).setUp()
+        super().setUp()
         self.write_zconf_with_test_instance()
 
     def test_help(self):

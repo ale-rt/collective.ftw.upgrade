@@ -6,7 +6,7 @@ from ftw.upgrade.browser.manage import ResponseLogger
 from ftw.upgrade.tests.base import UpgradeTestCase
 from plone.app.testing import SITE_OWNER_NAME
 from Products.CMFCore.utils import getToolByName
-from six import BytesIO
+from io import BytesIO
 from unittest import TestCase
 
 import logging
@@ -102,7 +102,7 @@ class TestResponseLogger(TestCase):
 class TestManageUpgrades(UpgradeTestCase):
 
     def setUp(self):
-        super(TestManageUpgrades, self).setUp()
+        super().setUp()
         self.portal_url = self.layer['portal'].portal_url()
         self.portal = self.layer['portal']
 

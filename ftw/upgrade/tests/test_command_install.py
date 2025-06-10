@@ -24,7 +24,7 @@ class TestInstallCommand(CommandAndInstanceTestCase):
     maxDiff = None
 
     def setUp(self):
-        super(TestInstallCommand, self).setUp()
+        super().setUp()
         self.write_zconf_with_test_instance()
 
     def test_help(self):
@@ -214,20 +214,20 @@ class TestInstallCommand(CommandAndInstanceTestCase):
             self.assertTrue(self.is_installed('the.package:default', datetime(2012, 12, 12)))
 
             self.assertEqual(
-                [u'ftw.upgrade: ______________________________________________________________________',
-                 u'ftw.upgrade: UPGRADE STEP the.package:default: TriggerReindex',
-                 u'ftw.upgrade: Ran upgrade step TriggerReindex for profile the.package:default',
-                 u'ftw.upgrade: 1 of 2 (50%): Processing indexing queue',
-                 u'ftw.upgrade: Transaction has been committed.',
-                 u'ftw.upgrade: Upgrade step duration: XXX',
-                 u'ftw.upgrade: Current memory usage in MB (RSS): XXX',
-                 u'ftw.upgrade: ______________________________________________________________________',
-                 u'ftw.upgrade: UPGRADE STEP the.package:default: Upgrade.',
-                 u'ftw.upgrade: Ran upgrade step Upgrade. for profile the.package:default',
-                 u'ftw.upgrade: Transaction has been committed.',
-                 u'ftw.upgrade: Upgrade step duration: XXX',
-                 u'ftw.upgrade: Current memory usage in MB (RSS): XXX',
-                 u'Result: SUCCESS'],
+                ['ftw.upgrade: ______________________________________________________________________',
+                 'ftw.upgrade: UPGRADE STEP the.package:default: TriggerReindex',
+                 'ftw.upgrade: Ran upgrade step TriggerReindex for profile the.package:default',
+                 'ftw.upgrade: 1 of 2 (50%): Processing indexing queue',
+                 'ftw.upgrade: Transaction has been committed.',
+                 'ftw.upgrade: Upgrade step duration: XXX',
+                 'ftw.upgrade: Current memory usage in MB (RSS): XXX',
+                 'ftw.upgrade: ______________________________________________________________________',
+                 'ftw.upgrade: UPGRADE STEP the.package:default: Upgrade.',
+                 'ftw.upgrade: Ran upgrade step Upgrade. for profile the.package:default',
+                 'ftw.upgrade: Transaction has been committed.',
+                 'ftw.upgrade: Upgrade step duration: XXX',
+                 'ftw.upgrade: Current memory usage in MB (RSS): XXX',
+                 'Result: SUCCESS'],
                 truncate_memory_and_duration(output.splitlines()))
 
     def test_failing_install_proposed_upgrades_of_profile_with_intermediate_commit(self):
@@ -257,18 +257,18 @@ class TestInstallCommand(CommandAndInstanceTestCase):
             self.assertFalse(self.is_installed('the.package:default', datetime(2012, 12, 12)))
 
             self.assertEqual(
-                [u'ftw.upgrade: ______________________________________________________________________',
-                 u'ftw.upgrade: UPGRADE STEP the.package:default: Upgrade.',
-                 u'ftw.upgrade: Ran upgrade step Upgrade. for profile the.package:default',
-                 u'ftw.upgrade: Transaction has been committed.',
-                 u'ftw.upgrade: Upgrade step duration: XXX',
-                 u'ftw.upgrade: Current memory usage in MB (RSS): XXX',
-                 u'ftw.upgrade: ______________________________________________________________________',
-                 u'ftw.upgrade: UPGRADE STEP the.package:default: Upgrade',
-                 u'ftw.upgrade: FAILED'],
+                ['ftw.upgrade: ______________________________________________________________________',
+                 'ftw.upgrade: UPGRADE STEP the.package:default: Upgrade.',
+                 'ftw.upgrade: Ran upgrade step Upgrade. for profile the.package:default',
+                 'ftw.upgrade: Transaction has been committed.',
+                 'ftw.upgrade: Upgrade step duration: XXX',
+                 'ftw.upgrade: Current memory usage in MB (RSS): XXX',
+                 'ftw.upgrade: ______________________________________________________________________',
+                 'ftw.upgrade: UPGRADE STEP the.package:default: Upgrade',
+                 'ftw.upgrade: FAILED'],
                 truncate_memory_and_duration(output.splitlines()[:9]))
             self.assertEqual(
-                [u'Result: FAILURE'],
+                ['Result: FAILURE'],
                 output.splitlines()[-1:])
 
     def test_install_proposed_upgrades_of_profile_fails_for_invalid_profiles(self):
@@ -283,7 +283,7 @@ class TestInstallCommand(CommandAndInstanceTestCase):
         self.layer['portal'].upgrade_info = PersistentList()
 
         setRoles(self.layer['portal'], TEST_USER_ID, ['Manager'])
-        create(Builder('folder').titled(u'The Folder'))
+        create(Builder('folder').titled('The Folder'))
 
         def upgrade_step(setup_context):
             portal = setup_context.portal_url.getPortalObject()
@@ -311,9 +311,9 @@ class TestInstallCommand(CommandAndInstanceTestCase):
             exitcode, output = self.upgrade_script(
                 'install -s plone --profiles the.package:default')
             self.assertEqual(
-                [u'ftw.upgrade: Installing profile the.package:default.',
-                 u'ftw.upgrade: Done installing profile the.package:default.',
-                 u'Result: SUCCESS'],
+                ['ftw.upgrade: Installing profile the.package:default.',
+                 'ftw.upgrade: Done installing profile the.package:default.',
+                 'Result: SUCCESS'],
                 output.splitlines())
 
     def test_install_profiles_skipped_when_already_installed(self):
@@ -322,9 +322,9 @@ class TestInstallCommand(CommandAndInstanceTestCase):
         exitcode, output = self.upgrade_script(
             'install -s plone --profiles ftw.upgrade:default')
         self.assertEqual(
-            [u'ftw.upgrade: Ignoring already installed profile'
-             u' ftw.upgrade:default.',
-             u'Result: SUCCESS'],
+            ['ftw.upgrade: Ignoring already installed profile'
+             ' ftw.upgrade:default.',
+             'Result: SUCCESS'],
             output.splitlines())
 
     def test_force_install_already_installed_profiles(self):
@@ -333,9 +333,9 @@ class TestInstallCommand(CommandAndInstanceTestCase):
         exitcode, output = self.upgrade_script(
             'install -s plone --force --profiles ftw.upgrade:default')
         self.assertEqual(
-            [u'ftw.upgrade: Installing profile ftw.upgrade:default.',
-             u'ftw.upgrade: Done installing profile ftw.upgrade:default.',
-             u'Result: SUCCESS'],
+            ['ftw.upgrade: Installing profile ftw.upgrade:default.',
+             'ftw.upgrade: Done installing profile ftw.upgrade:default.',
+             'Result: SUCCESS'],
             output.splitlines())
 
     def test_intermediate_commit_not_supported_with_install_profiles(self):
@@ -349,7 +349,7 @@ class TestInstallCommand(CommandAndInstanceTestCase):
                 assert_exitcode=False)
             self.assertEqual(3, exitcode)
             self.assertEqual(
-                [u'ERROR: --intermediate-commit is not implemented for --profiles.'],
+                ['ERROR: --intermediate-commit is not implemented for --profiles.'],
                 output.splitlines())
 
     def test_force_option_is_meant_to_be_combined_with_profiles(self):
@@ -358,7 +358,7 @@ class TestInstallCommand(CommandAndInstanceTestCase):
             assert_exitcode=False)
         self.assertEqual(3, exitcode)
         self.assertEqual(
-            [u'ERROR: --force can only be used with --profiles.'],
+            ['ERROR: --force can only be used with --profiles.'],
             output.splitlines())
 
     def test_instance_argument(self):
@@ -375,8 +375,8 @@ class TestInstallCommand(CommandAndInstanceTestCase):
             assert_exitcode=False)
 
         self.assertEqual(1, exitcode)
-        self.assertEqual(u'ERROR: No running Plone instance detected.\n', output)
+        self.assertEqual('ERROR: No running Plone instance detected.\n', output)
 
         exitcode, output = self.upgrade_script(
             'install -s plone --proposed --instance=instance')
-        self.assertEqual(u'Result: SUCCESS\n', output)
+        self.assertEqual('Result: SUCCESS\n', output)
