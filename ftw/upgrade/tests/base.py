@@ -15,6 +15,7 @@ from ftw.upgrade.testing import COMMAND_LAYER
 from ftw.upgrade.testing import UPGRADE_FUNCTIONAL_TESTING
 from ftw.upgrade.tests.helpers import truncate_memory_and_duration
 from ftw.upgrade.tests.helpers import verbose_logging
+from io import StringIO
 from operator import itemgetter
 from path import Path
 from plone.app.testing import login
@@ -24,11 +25,10 @@ from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_PASSWORD
 from plone.base.utils import safe_text
 from Products.CMFCore.utils import getToolByName
-from io import StringIO
 from unittest import TestCase
+from urllib.parse import urlencode
 from zope.component import getMultiAdapter
 from zope.component import queryAdapter
-from urllib.parse import urlencode
 
 import json
 import logging

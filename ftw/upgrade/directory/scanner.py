@@ -6,12 +6,10 @@ from glob import glob
 from plone.base.utils import safe_text
 from Products.GenericSetup.upgrade import normalize_version
 
+import importlib
 import inspect
 import os.path
 import re
-
-
-import importlib
 
 
 UPGRADESTEP_DATETIME_REGEX = re.compile(r"^.*/?(\d{14})[^/]*/upgrade.py$")

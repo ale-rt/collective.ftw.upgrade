@@ -4,9 +4,9 @@ from ftw.testbrowser import browsing
 from ftw.testbrowser.pages import statusmessages
 from ftw.upgrade.browser.manage import ResponseLogger
 from ftw.upgrade.tests.base import UpgradeTestCase
+from io import BytesIO
 from plone.app.testing import SITE_OWNER_NAME
 from Products.CMFCore.utils import getToolByName
-from io import BytesIO
 from unittest import TestCase
 
 import logging
