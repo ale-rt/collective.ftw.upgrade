@@ -62,7 +62,7 @@ class Scanner:
 
         if len(upgrade_steps) == 0:
             raise UpgradeStepDefinitionError(
-                "The upgrade step file {} has no upgrade class.".format(upgrade_path)
+                f"The upgrade step file {upgrade_path} has no upgrade class."
             )
 
         if len(upgrade_steps) > 1:

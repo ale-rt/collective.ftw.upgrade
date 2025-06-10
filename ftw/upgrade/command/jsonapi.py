@@ -210,7 +210,7 @@ def extend_url_with_virtualhost_config(zope_url, public_url, site):
     if not urlinfo.port:
         ports = {"http": 80, "https": 443}
         urlinfo = urlinfo._replace(
-            netloc="{}:{}".format(urlinfo.hostname, ports[urlinfo.scheme])
+            netloc=f"{urlinfo.hostname}:{ports[urlinfo.scheme]}"
         )
 
     url = zope_url.rstrip("/")

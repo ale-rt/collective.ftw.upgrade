@@ -73,7 +73,7 @@ def upgrade_step_directory_action(profile, dottedname, path, soft_dependencies):
 
         upgrade_handler = wrap_upgrade_step(
             handler=upgrade_info["callable"],
-            upgrade_profile="profile-{}:{}".format(dottedname, upgrade_profile_name),
+            upgrade_profile=f"profile-{dottedname}:{upgrade_profile_name}",
             base_profile=profile,
             target_version=upgrade_info["target-version"],
         )

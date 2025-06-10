@@ -162,7 +162,7 @@ class UpgradeCommand:
                         output = json.loads(output)
                         info[args.picked_site] = output
                     else:
-                        logger.info("Acting on site {}".format(args.picked_site))
+                        logger.info(f"Acting on site {args.picked_site}")
                         print(output)
                 except StopIteration:
                     break

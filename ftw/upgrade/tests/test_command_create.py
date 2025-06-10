@@ -51,7 +51,7 @@ class TestCreateCommand(CommandTestCase):
             "subpackage", "upgrades"
         )
         self.upgrade_script(
-            "create AddControlpanelAction --path {}".format(subpackage_upgrades_dir)
+            f"create AddControlpanelAction --path {subpackage_upgrades_dir}"
         )
 
         self.assertEqual(

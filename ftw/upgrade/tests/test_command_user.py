@@ -22,7 +22,7 @@ class TestUserCommand(CommandAndInstanceTestCase):
     def test_authentication_by_param(self):
         del os.environ["UPGRADE_AUTHENTICATION"]
         exitcode, output = self.upgrade_script(
-            "user --auth {}:{}".format(SITE_OWNER_NAME, TEST_USER_PASSWORD)
+            f"user --auth {SITE_OWNER_NAME}:{TEST_USER_PASSWORD}"
         )
         self.assertEqual(0, exitcode)
         self.assertEqual('Authenticated as "admin".\n', output)

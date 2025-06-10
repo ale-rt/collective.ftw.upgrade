@@ -71,7 +71,7 @@ def truncate_value(message, lines):
     truncated = []
     for line in lines:
         if message in line:
-            line = "{} XXX".format(line[: line.index(message) + len(message)])
+            line = f"{line[: line.index(message) + len(message)]} XXX"
         truncated.append(line)
     return truncated
 

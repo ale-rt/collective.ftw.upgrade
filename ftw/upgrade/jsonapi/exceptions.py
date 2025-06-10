@@ -13,7 +13,7 @@ class WrongAPIVersion(APIError):
     def __init__(self, requested_version):
         super().__init__(
             "Wrong API version",
-            'The API version "{}" is not available.'.format(requested_version),
+            f'The API version "{requested_version}" is not available.',
             response_code=404,
         )
 
@@ -51,7 +51,7 @@ class MissingParam(APIError):
     def __init__(self, param_name):
         super().__init__(
             "Param missing",
-            'The param "{}" is required for this API action.'.format(param_name),
+            f'The param "{param_name}" is required for this API action.',
         )
 
 

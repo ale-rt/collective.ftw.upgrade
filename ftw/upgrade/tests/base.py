@@ -346,7 +346,7 @@ class JsonApiTestCase(UpgradeTestCase):
         self.assert_json_equal(expected_profileinfo, got_profiles[profileid], msg)
 
     def assert_json_contains(self, expected_element, got_elements):
-        message = "Could not find:\n\n{0}\n\nin list:\n\n{1}".format(
+        message = "Could not find:\n\n{}\n\nin list:\n\n{}".format(
             json.dumps(expected_element, sort_keys=True, indent=4),
             json.dumps(got_elements, sort_keys=True, indent=4),
         )

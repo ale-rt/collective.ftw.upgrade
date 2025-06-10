@@ -146,7 +146,7 @@ class Executioner:
             if self.statistics_filename:
                 with open(self.statistics_filename, "a") as stats_file:
                     stats_file.write(
-                        "{}, {}, {}\n".format(profileid, upgradeid, int(duration))
+                        f"{profileid}, {upgradeid}, {int(duration)}\n"
                     )
 
         self._set_quickinstaller_version(profileid)
@@ -187,12 +187,12 @@ class Executioner:
     def _do_upgrade(self, profileid, upgradeid):
         step = _upgrade_registry.getUpgradeStep(profileid, upgradeid)
         logger.log(logging.INFO, "_" * 70)
-        logger.log(logging.INFO, "UPGRADE STEP {}: {}".format(profileid, step.title))
+        logger.log(logging.INFO, f"UPGRADE STEP {profileid}: {step.title}")
 
         step.doStep(self.portal_setup)
         TransactionNote().add_upgrade(profileid, step.dest, step.title)
 
-        msg = "Ran upgrade step {} for profile {}".format(step.title, profileid)
+        msg = f"Ran upgrade step {step.title} for profile {profileid}"
         logger.log(logging.INFO, msg)
 
         return step.dest
