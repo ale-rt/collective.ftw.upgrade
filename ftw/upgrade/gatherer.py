@@ -63,6 +63,7 @@ def extend_auto_upgrades_with_human_formatted_date_version(profiles):
     corresponding version is a 14 digit timestamp with the timestamp in a
     human readable format.
     """
+
     def to_human_readable(datestr):
         return datetime.strptime(datestr, "%Y%m%d%H%M%S").strftime("%Y-%m-%d %H:%M:%S")
 

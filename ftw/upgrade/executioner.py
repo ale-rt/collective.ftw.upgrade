@@ -145,9 +145,7 @@ class Executioner:
             log_memory_usage(logger)
             if self.statistics_filename:
                 with open(self.statistics_filename, "a") as stats_file:
-                    stats_file.write(
-                        f"{profileid}, {upgradeid}, {int(duration)}\n"
-                    )
+                    stats_file.write(f"{profileid}, {upgradeid}, {int(duration)}\n")
 
         self._set_quickinstaller_version(profileid)
 

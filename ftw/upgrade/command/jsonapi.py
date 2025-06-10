@@ -209,9 +209,7 @@ def extend_url_with_virtualhost_config(zope_url, public_url, site):
     # a port is required for the virtual host monster to work nicely.
     if not urlinfo.port:
         ports = {"http": 80, "https": 443}
-        urlinfo = urlinfo._replace(
-            netloc=f"{urlinfo.hostname}:{ports[urlinfo.scheme]}"
-        )
+        urlinfo = urlinfo._replace(netloc=f"{urlinfo.hostname}:{ports[urlinfo.scheme]}")
 
     url = zope_url.rstrip("/")
     url += "/VirtualHostBase"

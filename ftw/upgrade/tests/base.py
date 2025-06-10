@@ -368,9 +368,7 @@ class JsonApiTestCase(UpgradeTestCase):
             if method.lower() == "get":
                 browser.visit(
                     context,
-                    view="upgrades-api/{}?{}".format(
-                        action, urlencode(data)
-                    ),
+                    view="upgrades-api/{}?{}".format(action, urlencode(data)),
                 )
 
             elif method.lower() == "post":
