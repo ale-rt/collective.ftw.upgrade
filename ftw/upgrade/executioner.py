@@ -25,6 +25,7 @@ import os
 import time
 import transaction
 
+
 try:
     from Products.CMFPlone.utils import get_installer
 except ImportError:

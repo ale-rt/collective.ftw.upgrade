@@ -23,6 +23,7 @@ from zope.interface.verify import verifyClass
 
 import pkg_resources
 
+
 try:
     from Products.CMFPlone.utils import get_installer
 except ImportError:
@@ -764,12 +765,12 @@ class TestUpgradeStep(UpgradeTestCase):
     def test_migrate_class_also_updates_provided_interfaces_info(self):
         if getFSVersionTuple() > (5, ):
             from plone.app.contenttypes.content import Link
-            from plone.app.contenttypes.interfaces import ILink
             from plone.app.contenttypes.interfaces import IDocument
+            from plone.app.contenttypes.interfaces import ILink
         else:
             from Products.ATContentTypes.content.link import ATLink as Link
-            from Products.ATContentTypes.interfaces import IATLink as ILink
             from Products.ATContentTypes.interfaces import IATDocument as IDocument
+            from Products.ATContentTypes.interfaces import IATLink as ILink
 
         obj = create(Builder('document'))
         self.assertTrue(IDocument.providedBy(obj))
@@ -786,8 +787,8 @@ class TestUpgradeStep(UpgradeTestCase):
                         'Link interface not added in migration')
 
     def test_remove_broken_browserlayer(self):
-        from plone.browserlayer.utils import registered_layers
         from plone.browserlayer.interfaces import ILocalBrowserLayerType
+        from plone.browserlayer.utils import registered_layers
         register_layer(IMyProductLayer, 'my.product')
 
         class Step(UpgradeStep):

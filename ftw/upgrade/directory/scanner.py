@@ -12,6 +12,7 @@ import os.path
 import re
 import six
 
+
 if six.PY2:
     import imp
 else:

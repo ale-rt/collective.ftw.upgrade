@@ -1,4 +1,5 @@
 from __future__ import print_function
+
 from contextlib import closing
 from ftw.upgrade.command.jsonapi import add_requestor_authentication_argument
 from ftw.upgrade.command.jsonapi import add_requestor_instance_argument

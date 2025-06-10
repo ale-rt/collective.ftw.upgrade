@@ -9,8 +9,8 @@ from ftw.upgrade.interfaces import IUpgradeInformationGatherer
 from ftw.upgrade.tests.base import UpgradeTestCase
 from Products.CMFPlone.utils import getFSVersionTuple
 from unittest import TestCase
-from zope.component import queryAdapter
 from zope.component import getMultiAdapter
+from zope.component import queryAdapter
 from zope.interface.verify import verifyClass
 
 

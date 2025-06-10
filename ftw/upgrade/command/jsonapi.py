@@ -1,4 +1,5 @@
 from __future__ import print_function
+
 from binascii import hexlify
 from ftw.upgrade.utils import get_tempfile_authentication_directory
 from path import Path

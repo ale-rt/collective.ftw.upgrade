@@ -1,6 +1,7 @@
 from ftw.upgrade.interfaces import IClassMigratedEvent
 from zope.interface import implementer
 
+
 try:
     from zope.interface.interfaces import ObjectEvent
 except ImportError:

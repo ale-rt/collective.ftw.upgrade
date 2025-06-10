@@ -17,6 +17,7 @@ from zope.component import getMultiAdapter
 from zope.deprecation import deprecated
 from zope.interface import implementer
 
+
 try:
     from Products.CMFPlone.utils import get_installer
 except ImportError:
