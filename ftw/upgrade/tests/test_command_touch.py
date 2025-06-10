@@ -3,8 +3,6 @@ from ftw.builder import Builder
 from ftw.builder import create
 from ftw.upgrade.tests.base import CommandTestCase
 
-import six
-
 
 class TestTouchCommand(CommandTestCase):
 

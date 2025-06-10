@@ -5,9 +5,9 @@ from ftw.upgrade.command.jsonapi import add_site_path_argument
 from ftw.upgrade.command.jsonapi import error_handling
 from ftw.upgrade.command.jsonapi import with_api_requestor
 from ftw.upgrade.command.terminal import TERMINAL
+from plone.base.utils import safe_text
 
 import re
-import six
 import sys
 
 
@@ -174,7 +174,7 @@ def install_command(args, requestor):
 
     with closing(requestor.POST(action, params=params, stream=True)) as response:
         for line in response.iter_lines(chunk_size=30):
-            line = six.ensure_str(line)
+            line = safe_text(line)
 
             print(line)
 

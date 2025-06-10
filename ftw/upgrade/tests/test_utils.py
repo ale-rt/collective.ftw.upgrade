@@ -13,7 +13,6 @@ from ftw.upgrade.utils import subject_from_docstring
 from ftw.upgrade.utils import topological_sort
 from unittest import TestCase
 
-import six
 import stat
 
 

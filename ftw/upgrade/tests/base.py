@@ -22,21 +22,19 @@ from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_PASSWORD
+from plone.base.utils import safe_text
 from Products.CMFCore.utils import getToolByName
 from io import StringIO
 from unittest import TestCase
 from zope.component import getMultiAdapter
 from zope.component import queryAdapter
+from urllib.parse import urlencode
 
 import json
 import logging
 import lxml.html
 import os
 import re
-import six
-import six.moves.urllib.error
-import six.moves.urllib.parse
-import six.moves.urllib.request
 import transaction
 
 
@@ -175,7 +173,7 @@ class UpgradeTestCase(TestCase):
                 map(
                     str.strip,
                     map(
-                        six.ensure_str,
+                        safe_text,
                         map(
                             lxml.html.tostring,
                             doc.xpath(
@@ -371,7 +369,7 @@ class JsonApiTestCase(UpgradeTestCase):
                 browser.visit(
                     context,
                     view="upgrades-api/{}?{}".format(
-                        action, six.moves.urllib.parse.urlencode(data)
+                        action, urlencode(data)
                     ),
                 )
 

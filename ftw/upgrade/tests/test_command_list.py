@@ -5,7 +5,6 @@ from ftw.upgrade.tests.base import CommandAndInstanceTestCase
 
 import json
 import re
-import six
 
 
 class TestListCommand(CommandAndInstanceTestCase):

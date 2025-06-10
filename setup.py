@@ -61,7 +61,6 @@ setup(
         "path.py >= 6.2",
         "requests",
         "setuptools",
-        "six >= 1.12.0",
         "tarjan",
         "psutil",
         # Zope

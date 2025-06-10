@@ -3,12 +3,12 @@ from ftw.upgrade.exceptions import UpgradeStepDefinitionError
 from ftw.upgrade.utils import subject_from_docstring
 from functools import reduce
 from glob import glob
+from plone.base.utils import safe_text
 from Products.GenericSetup.upgrade import normalize_version
 
 import inspect
 import os.path
 import re
-import six
 
 
 import importlib
@@ -24,8 +24,6 @@ class Scanner:
         self.directory = directory
 
     def scan(self):
-        if six.PY2:
-            self._load_upgrades_directory()
         infos = list(
             map(self._build_upgrade_step_info, self._find_upgrade_directories())
         )
@@ -95,7 +93,7 @@ class Scanner:
                 continue
 
             title = subject_from_docstring(inspect.getdoc(value) or name)
-            title = six.ensure_text(title)
+            title = safe_text(title)
             yield (title, value)
 
     def _load_upgrade_step_code(self, upgrade_path):
@@ -124,7 +122,7 @@ class Scanner:
             if value == UpgradeStep or not issubclass(value, UpgradeStep):
                 continue
             title = subject_from_docstring(inspect.getdoc(value) or name)
-            title = six.ensure_text(title)
+            title = safe_text(title)
             yield (title, value)
 
     def _load_upgrades_directory(self):
