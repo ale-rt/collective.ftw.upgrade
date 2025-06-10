@@ -6,7 +6,6 @@ HAS_INDEXING = False
 try:
     # Plone 5
     from Products.CMFCore.indexing import getQueue
-    from Products.CMFCore.indexing import processQueue
 except ImportError:
     try:
         # Plone 4 with collective.indexing
@@ -19,7 +18,6 @@ except ImportError:
 
     else:
         from collective.indexing.queue import getQueue
-        from collective.indexing.queue import processQueue
 
         HAS_INDEXING = True
 else:

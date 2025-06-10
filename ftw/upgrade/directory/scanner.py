@@ -53,49 +53,6 @@ class Scanner:
         second["source-version"] = first["target-version"]
         return second
 
-    def _load_upgrade_step_code_py27(self, upgrade_path):
-        path = os.path.dirname(upgrade_path)
-
-        try:
-            fp, pathname, description = imp.find_module(".", [path])
-        except ImportError:
-            pass
-        else:
-            name = ".".join((self.dottedname, os.path.basename(path)))
-            imp.load_module(name, fp, pathname, description)
-
-        fp, pathname, description = imp.find_module("upgrade", [path])
-        name = ".".join((self.dottedname, os.path.basename(path), "upgrade"))
-
-        module = imp.load_module(name, fp, pathname, description)
-        upgrade_steps = tuple(self._find_upgrade_step_classes_in_module_py27(module))
-
-        if len(upgrade_steps) == 0:
-            raise UpgradeStepDefinitionError(
-                "The upgrade step {} has no upgrade class in the"
-                " upgrade.py module.".format(os.path.basename(path))
-            )
-
-        if len(upgrade_steps) > 1:
-            raise UpgradeStepDefinitionError(
-                "The upgrade step {} has more than one upgrade class in the"
-                " upgrade.py module.".format(os.path.basename(path))
-            )
-
-        return upgrade_steps[0]
-
-    def _find_upgrade_step_classes_in_module_py27(self, module):
-        for name, value in inspect.getmembers(module, inspect.isclass):
-            if not issubclass(value, UpgradeStep):
-                continue
-
-            if inspect.getmodule(value) is not module:
-                continue
-
-            title = subject_from_docstring(inspect.getdoc(value) or name)
-            title = safe_text(title)
-            yield (title, value)
-
     def _load_upgrade_step_code(self, upgrade_path):
         spec = importlib.util.spec_from_file_location(".", upgrade_path)
         module = importlib.util.module_from_spec(spec)
@@ -124,16 +81,3 @@ class Scanner:
             title = subject_from_docstring(inspect.getdoc(value) or name)
             title = safe_text(title)
             yield (title, value)
-
-    def _load_upgrades_directory(self):
-        """This method tries to load the upgrade step directory, if there is
-        an __init__.py. This helps to avoid RuntimeWarnings.
-        However, it is not relevant for anything to work,
-        it just makes Python happy.
-        """
-        try:
-            fp, pathname, description = imp.find_module(".", [self.directory])
-        except ImportError:
-            pass
-        else:
-            imp.load_module(self.dottedname, fp, str(pathname), description)

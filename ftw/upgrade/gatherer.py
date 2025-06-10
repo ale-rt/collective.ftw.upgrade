@@ -63,9 +63,8 @@ def extend_auto_upgrades_with_human_formatted_date_version(profiles):
     corresponding version is a 14 digit timestamp with the timestamp in a
     human readable format.
     """
-    to_human_readable = lambda datestr: datetime.strptime(
-        datestr, "%Y%m%d%H%M%S"
-    ).strftime("%Y/%m/%d %H:%M")
+    def to_human_readable(datestr):
+        return datetime.strptime(datestr, "%Y%m%d%H%M%S").strftime("%Y-%m-%d %H:%M:%S")
 
     for profile in profiles:
         if len(profile.get("db_version", "")) == 14:
@@ -285,7 +284,12 @@ class UpgradeInformationGatherer:
         """
 
         sorted_profile_ids = get_sorted_profile_ids(self.portal_setup)
-        return sorted(profiles, key=lambda p: sorted_profile_ids.index(p.get("id")))
+
+        def sorting_key(profile):
+            """Returns the index of the profile in the sorted list of profile ids."""
+            return sorted_profile_ids.index(profile.get("id"))
+
+        return sorted(profiles, key=sorting_key)
 
     security.declarePrivate("_is_orphan")
 

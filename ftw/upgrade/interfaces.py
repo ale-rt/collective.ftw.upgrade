@@ -47,18 +47,17 @@ class IUpgradeInformationGatherer(Interface):
         """Returns upgrades grouped by done / proposed and assigned profile.
 
         Example output:
-        >>> [{'db_version': u'3',
+        >>> [{'db_version': '3',
         ...   'product': 'Products.CMFEditions',
-        ...   'description': u'Extension profile for default ' + \
-        ...       'CMFEditions setup.',
-        ...   'title': u'CMFEditions',
-        ...   'version': u'3',
+        ...   'description': 'Extension profile for default CMFEditions setup.',
+        ...   'title': 'CMFEditions',
+        ...   'version': '3',
         ...   'upgrades': [
         ...       {'haspath': ('3',
         ...                   ),
         ...        'description': None,
         ...        'proposed': False,
-        ...        'title': u'Fix portal_historyidhandler',
+        ...        'title': 'Fix portal_historyidhandler',
         ...        'dest': ('3',
         ...                ),
         ...        'ssource': '2.0',
@@ -68,9 +67,9 @@ class IUpgradeInformationGatherer(Interface):
         ...        'done': True,
         ...        'id': '8159946379289711266',
         ...        'sdest': '3'}],
-        ...   'path': u'/.../profiles/default',
+        ...   'path': '/.../profiles/default',
         ...   'type': 2,
-        ...   'id': u'Products.CMFEditions:CMFEditions'}]
+        ...   'id': 'Products.CMFEditions:CMFEditions'}]
         """
 
     def get_upgrades_by_api_ids(*api_ids):

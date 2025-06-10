@@ -6,8 +6,6 @@ from ftw.upgrade.directory.scanner import Scanner
 from ftw.upgrade.exceptions import UpgradeStepDefinitionError
 from ftw.upgrade.tests.base import UpgradeTestCase
 
-import unittest
-
 
 class TestDirectoryScanner(UpgradeTestCase):
 
