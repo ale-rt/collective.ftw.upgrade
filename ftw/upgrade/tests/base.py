@@ -186,7 +186,7 @@ class UpgradeTestCase(TestCase):
 
         resources = get_resources()
         yield
-        self.assertNotEqual(resources, get_resources(), "Resurces are not recooked.")
+        self.assertNotEqual(resources, get_resources(), "Resources are not recooked.")
 
     @contextmanager
     def assert_bundles_combined(self):

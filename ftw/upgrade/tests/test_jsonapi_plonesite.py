@@ -172,7 +172,7 @@ class TestPloneSiteJsonApi(JsonApiTestCase):
         self.assertEqual("GET", browser.headers.get("allow"))
 
     @browsing
-    def test_get_unkown_profile_returns_error(self, browser):
+    def test_get_unknown_profile_returns_error(self, browser):
         with self.expect_api_error(
             status=400,
             message="Profile not available",
@@ -453,7 +453,7 @@ class TestPloneSiteJsonApi(JsonApiTestCase):
         with self.expect_api_error(
             status=400,
             message="Upgrade not found",
-            details='The upgrade "foo@bar:default" is unkown.',
+            details='The upgrade "foo@bar:default" is unknown.',
         ):
             self.api_request(
                 "POST", "execute_upgrades", {"upgrades:list": "foo@bar:default"}

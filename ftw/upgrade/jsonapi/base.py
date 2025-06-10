@@ -1,4 +1,4 @@
-from ftw.upgrade.jsonapi.exceptions import UnkownAPIAction
+from ftw.upgrade.jsonapi.exceptions import UnknownAPIAction
 from ftw.upgrade.jsonapi.exceptions import WrongAPIVersion
 from ftw.upgrade.jsonapi.utils import action
 from ftw.upgrade.jsonapi.utils import ErrorHandling
@@ -37,7 +37,7 @@ class APIView(BrowserView):
             return action
 
         with ErrorHandling(self.request.RESPONSE):
-            raise UnkownAPIAction(name)
+            raise UnknownAPIAction(name)
         request["TraversalRequestNameStack"] = []
         return ""
 

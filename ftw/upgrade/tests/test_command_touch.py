@@ -189,7 +189,7 @@ class TestTouchCommand(CommandTestCase):
     def test_moving_upgrade_step_should_not_import_upgrade_step(self):
         """The bin/upgrade path does usually only include ftw.upgrade (and dependencies)
         but not the path of the package in development or its dependencies.
-        Therefore the bin/upgrade command should not import any code.
+        therefore the bin/upgrade command should not import any code.
         """
 
         code = 'raise AssertionError("Upgrade code should not be imported..")'

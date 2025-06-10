@@ -71,10 +71,10 @@ class TestZopeAppJsonApi(JsonApiTestCase):
         )
 
     @browsing
-    def test_requesting_unkown_action(self, browser):
+    def test_requesting_unknown_action(self, browser):
         with self.expect_api_error(
             status=404,
-            message="Unkown API action",
+            message="Unknown API action",
             details='There is no API action "something".',
         ):
             self.api_request("GET", "something", context=self.app)

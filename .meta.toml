@@ -4,3 +4,7 @@
 [meta]
 template = "default"
 commit-id = "2.0.1.dev0"
+
+[pyproject]
+codespell_ignores = "requestor,"
+
